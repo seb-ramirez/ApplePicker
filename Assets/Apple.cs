@@ -3,13 +3,16 @@ using System.Collections;
 
 public class Apple : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
+	public static float 	bottomY = -20f;
+
 	void Update () {
-	
+		if ( transform.position.y < bottomY ) {
+			Destroy (this.gameObject);
+
+			//get a reference to the applepicker component of the main camera
+			ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();
+			// call the public appledestroyed() method of apscript
+			apScript.AppleDestroyed();
+		}
 	}
 }
